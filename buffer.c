@@ -6,44 +6,40 @@
 /*   By: nbeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 13:04:45 by nbeny             #+#    #+#             */
-/*   Updated: 2016/11/23 15:55:32 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/11/23 19:29:35 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	**ft_reader(int **tab, int size)
+static int	**ft_reader(t_list **alst)
 {
-	int		i;
-	int		j;
-	int		k;
+	t_var a;
 	int		fd;
-	char	buffer;
-
-	fd = open(argv[1], O_RDONLY);
-	while (read(fd, &buffer, 21) != 0)
-	{
-		k = 0;
-		while (buffer[k])
-		{
-			if (buffer[k] == '.')
-				tab
-		}
-	}
-}
-
-void		buffer(t_list **alst, void (*f)(void **, size_t))
-{
-	t_list	*lst;
-	t_list	*new;
-	t_list	*nxtlst;
+	char	buffer[21];
+	t_list	lst;
 
 	lst = (*alst);
-	nxtlst = lst->next;
-	new = ft_lstnew(lst->tab, lst->size);
-	while (lst)
+	lst = ft_lstnew(**tab, size);
+	a.j = 0;
+	fd = open(argv[1], O_RDONLY);
+	while (read(fd, buffer, 21) != 0)
 	{
-		f(lst->new);
-		lst = nxtlst;
+		a.k = 0;
+		while (a.k < 20)
+		{
+			if (buffer[k] == '.')
+					lst->tab[j][i++] = 0;
+			if (buffer[k] == '#')
+					lst->tab[j][i++] = 1;
+			if (buffer[k] == '\n')
+			{
+				i = 0;
+				j++;
+			}
+		}
+		ft_lstadd(lst->tab, lst->size);
+
 	}
+	return (tab);
 }

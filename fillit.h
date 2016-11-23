@@ -6,7 +6,7 @@
 /*   By: nbeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 13:08:19 by nbeny             #+#    #+#             */
-/*   Updated: 2016/11/23 15:55:30 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/11/23 19:11:00 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,16 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+typedef struct	s_var
+{
+	int i;
+	int j;
+	int k;
+	int l;
+}				t_var;
 typedef struct	s_list
 {
-	void			**tab;
+	int				**tab;
 	size_t			size;
 	struct s_list	*next;
 }				t_list;

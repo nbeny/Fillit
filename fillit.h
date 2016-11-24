@@ -6,7 +6,7 @@
 /*   By: nbeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 13:08:19 by nbeny             #+#    #+#             */
-/*   Updated: 2016/11/24 00:44:25 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/11/24 20:51:25 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct	s_buff
 typedef struct	s_var
 {
 	int a;
-	int b;
 	int i;
 	int j;
 	int k;
@@ -34,7 +33,6 @@ typedef struct	s_var
 typedef struct	s_list
 {
 	int				**tab;
-	size_t			size;
 	struct s_list	*next;
 }				t_list;
 //t_list			*ft_lstnew(void const **tab, size_t size);

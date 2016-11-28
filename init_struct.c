@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buffer.c                                           :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 13:04:45 by nbeny             #+#    #+#             */
-/*   Updated: 2016/11/28 18:45:30 by nbeny            ###   ########.fr       */
+/*   Created: 2016/11/28 09:35:31 by nbeny             #+#    #+#             */
+/*   Updated: 2016/11/28 15:38:02 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
+
+t_buff		*init_tbuff(t_buff *buff, char **av)
+{
+	buff->fd = open(av[1], O_RDONLY);
+	return (buff);
+}
 
 t_var		*init_tvar(t_var *var)
 {
@@ -23,75 +28,71 @@ t_var		*init_tvar(t_var *var)
 	return (var);
 }
 
-t_buff		*init_tbuff(t_buff *buff, char **av)
+t_list		*init_tab_tlst(t_list *list, t_var *var, t_buff *buff)
 {
-	buff->fd = open(av[1], O_RDONLY);
-	return (buff);
-}
-
-t_list		*init_tab(t_list *list, t_var *var, t_buff *buff)
-{
+	var->j = 0;
 	var->k = 0;
-	var->i = 0;
-	var->a = 0;
-	while (buff->buff[var->k] != '#')
-		var->k++;
-	while (var->k < 20 && var->a < 4)
+	while (var->k < 20)
 	{
 		if (buff->buff[var->k] == '.')
 		{
-			list->tab[var->i] = '.';
+			list->tab[var->j][var->i] = '.';
+			printf("%d ", list->tab[var->j][var->i]);fflush(stdout);
 			var->i++;
 		}
 		if (buff->buff[var->k] == '#')
 		{
-			list->tab[var->i] = ('A' + var->l);
+			list->tab[var->j][var->i] = ('A' + var->l);
+			printf("%d ", list->tab[var->j][var->i]);fflush(stdout);
 			var->i++;
-			var->a++;
+		}
+		if (buff->buff[var->k] == '\n')
+		{
+			var->i = 0;
+			var->j++;
+			printf("\n");fflush(stdout);
 		}
 		var->k++;
 	}
-	list->tab[var->i] = '\0';
 	var->l++;
 	return (list);
 }
 
-t_list		*ft_reader(int ac, char **av)
+t_pos		init_tpos(t_pos *pos)
+{
+	x = 0;
+	y = 0;
+	pos = 0;
+	nblst = 0;
+	return (pos);
+}
+
+t_list		*init_tlist(int ac, char **av)
 {
 	t_list	*save;
 	t_list	*list;
-	t_list	*beflist;
 	t_var	*var;
 	t_buff	*buff;
+	t_data	*data;
 
+	data = (t_data *)malloc(sizeof(t_data));
 	buff = (t_buff *)malloc(sizeof(t_buff));
 	var = (t_var *)malloc(sizeof(t_var));
+	list = (t_list *)malloc(sizeof(t_list));
+	if (!data || !bull || !var || !list)
+		return (NULL);
+	data = init_tpos(data);
 	buff = init_tbuff(buff, av);
 	var = init_tvar(var);
-	list = (t_list *)malloc(sizeof(t_list));
 	save = list;
 	while (read(buff->fd, buff->buff, 21) != 0)
 	{
 		list = init_tab(list, var, buff);
-		beflist = list;
-		list->next = (t_list *)malloc(sizeof(t_list));
+		if(!(list->next = (t_list *)malloc(sizeof(t_list))))
+			return (NULL);
 		list = list->next;
+		data->nblst++;
 	}
-	free(list);
 	list = NULL;
-	beflist->next = NULL;
 	return (save);
-}
-
-int		main(int ac, char **av)
-{
-	t_list	*alist;
-
-	alist =	ft_reader(ac, av);
-	while (alist)
-	{
-		printf("%s\n", alist->tab);
-		alist = alist->next;
-	}
-	return(0);
 }

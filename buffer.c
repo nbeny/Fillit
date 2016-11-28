@@ -6,7 +6,7 @@
 /*   By: nbeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 13:04:45 by nbeny             #+#    #+#             */
-/*   Updated: 2016/11/25 18:18:01 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/11/28 17:51:16 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,31 @@ t_buff		*init_tbuff(t_buff *buff, char **av)
 
 t_list		*init_tab(t_list *list, t_var *var, t_buff *buff)
 {
-		var->j = 0;
-		var->k = 0;
-		while (var->k < 20)
+	var->k = 0;
+	var->a = 0;
+	var->i = 0;
+	while (buff->buff[var->k] != '#')
+		var->k++;
+	while (var->k < 20 && var->a < 4)
+	{
+		if (buff->buff[var->k] == '.')
 		{
-			if (buff->buff[var->k] == '.')
-			{
-				list->tab[var->j][var->i] = 0;
-				printf("%d ", list->tab[var->j][var->i]);fflush(stdout);
-				var->i++;
-			}
-			if (buff->buff[var->k] == '#')
-			{
-				list->tab[var->j][var->i] = 1;
-				printf("%d ", list->tab[var->j][var->i]);fflush(stdout);
-				var->i++;
-			}
-			if (buff->buff[var->k] == '\n')
-			{
-				var->i = 0;
-				var->j++;
-				printf("\n");fflush(stdout);
-			}
-			var->k++;
+			list->tab[var->i] = '.';
+			var->i++;
 		}
-		return (list);
+		if (buff->buff[var->k] == '#')
+		{
+			list->tab[var->i] = ('A' + var->l);
+			var->i++;
+			var->a++;
+		}
+		var->k++;
+	list->tab[var->i] = '\0';
+	var->l++;
+	return (list);
 }
 
-t_list		*ft_reader(int ac, char **av)
+t_list		*ft_reader(char **av)
 {
 	t_list	*save;
 	t_list	*list;
@@ -69,7 +66,7 @@ t_list		*ft_reader(int ac, char **av)
 	var = (t_var *)malloc(sizeof(t_var));
 	buff = init_tbuff(buff, av);
 	var = init_tvar(var);
-	if (list && av)
+	if (av)
 	{
 		list = (t_list *)malloc(sizeof(t_list));
 		save = list;
@@ -88,27 +85,14 @@ int		main(int ac, char **av)
 {
 	t_list	*alist;
 	int y;
-	int t;
-	int r;
 
-	r = 1;
+	(void)ac;
 	y = 0;
-	alist =	ft_reader(ac, av);
+	alist =	ft_reader(av);
 	while (alist)
 	{
-		t = 0;
-		while (t < 4)
-		{
-			y = 0;
-			while (y < 4)
-			{
-				printf("%d : %d\n",r , alist->tab[t][y]);
-				y++;
-				r++;
-			}
-			t++;
-		}
-		alist = alist->next;
+			printf("%s\n", alist->tab);
+			alist = alist->next;
 	}
 	return(0);
 }

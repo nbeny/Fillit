@@ -6,7 +6,7 @@
 /*   By: nbeny <nbeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 23:25:00 by nbeny             #+#    #+#             */
-/*   Updated: 2016/12/01 05:36:55 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/12/02 01:01:02 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		ft_tchecinser(t_pos *pos, char **map)
 char	**ft_printtetri(t_pos *pos, char **map, t_var *var)
 {
 	var->l = 65;
-	map[pos->y + (pos->pos[1][0] - pos->pos[0][0])] \
+	map[pos->y + (pos->pos[1][0] - pos->pos[0][0])]					\
 		[pos->x + (pos->pos[1][1] - pos->pos[0][1])] = (char)(var->l);
 	map[pos->y + (pos->pos[2][0] - pos->pos[0][0])] \
 		[pos->x + (pos->pos[2][1] - pos->pos[0][1])] = (char)(var->l);

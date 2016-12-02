@@ -6,7 +6,7 @@
 /*   By: kbagot <kbagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 18:41:14 by kbagot            #+#    #+#             */
-/*   Updated: 2016/12/01 05:36:22 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/12/01 18:13:06 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		main(int ac, char **av)
 {
 	int		result;
-	t_list	*listt;
+	t_list	*list;
 	char	**map;
 	int		tminos;
 	int		i;
@@ -27,10 +27,10 @@ int		main(int ac, char **av)
 		write(1, "error\n", 6);
 		return (0);
 	}
-	listt = ft_stockt(av);
-	tminos = ft_tabt(listt);
+	list = ft_stockt(av);
+	tminos = ft_tabt(list);
 	map = ft_makemap(tminos);
-	while (listt)
+	while (list)
 	{
 		map = ft_lookmap(map);
 		while (map[i])
@@ -38,7 +38,7 @@ int		main(int ac, char **av)
 			printf("%s\n", map[i]);
 			i++;
 		}
-		listt = listt->next;
+		list = list->next;
 	}
 	return (0);
 }

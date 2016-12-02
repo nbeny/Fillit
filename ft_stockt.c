@@ -1,5 +1,3 @@
-/* ************************************************************************** */
-
 #include "fillit.h"
 
 t_var		*init_tvar(t_var *var)
@@ -20,7 +18,7 @@ t_buff		*init_tbuff(t_buff *buff, char **av)
 
 t_list		*init_tab(t_list *list, t_var *var, t_buff *buff)
 {
-	var->b = -1;
+	var->b = 0;
 	var->i = 0;
 	var->j = 0;
 	while (var->b < 20)

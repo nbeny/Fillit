@@ -6,7 +6,7 @@
 /*   By: kbagot <kbagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 18:28:42 by kbagot            #+#    #+#             */
-/*   Updated: 2016/12/01 04:36:44 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/12/01 18:33:10 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,22 @@ char	**ft_makemap(int tminos)
 	j = 0;
 	if (!(map = (char **)malloc(sizeof(char *) * (tminos + 1))))
 		return (NULL);
-	while (map[j])
+	while (j < tminos)
 	{
 		if (!(map[j] = (char *)malloc(sizeof(char) * (tminos + 1))))
 			return (NULL);
+		j++;
+	}
+	j = 0;
+	while (j < tminos)
+	{
 		i = 0;
-		while (map[j][i])
+		while (i < tminos)
 		{
-			if (i < tminos)
-				map[j][i] = '.';
-			if (i == tminos)
-				map[j][i] = '\0';
+			map[j][i] = '.';
 			i++;
 		}
+		map[j][i] = '\0';
 		j++;
 	}
 	map[j] = NULL;

@@ -1,4 +1,17 @@
-Tou en tableau en 2D, probleme dans le main, on ne rentre pas dans la boucle while de liste chainee...
-Bon courage et good day !
+#Project Fillit
+>>>> #####exploration project.
 
-gccW ft_tabt.c ft_makemap.c check_valid.c ft_stockt.c ft_fillTmap.c main.c
+#####Grade ``(NOT END/100)`` ``(NOT END/125)*``
+--------  -----------------------
+
+Sources:
+- [X] parcing fillit.exemple
+- [X] stock tetriminos
+- [ ] Print a tetriminos
+- [ ] Print map
+- [ ] Resolver
+
+##### test avec 42_FileChecker:
+https://github.com/jgigault/42FileChecker
+
+![42_filechecker]()

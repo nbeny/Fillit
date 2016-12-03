@@ -1,7 +1,7 @@
 #Project Fillit
 >>>> #####exploration project.
 
-#####Grade ``(NOT END/100)`` ``(NOT END/125)*``
+#####Grade ``(in progess/100)`` ``(in progess/125)*``
 --------  -----------------------
 
 ##For KBagot

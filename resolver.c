@@ -6,29 +6,26 @@
 /*   By: nbeny <nbeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 20:32:44 by nbeny             #+#    #+#             */
-/*   Updated: 2016/12/02 01:01:24 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/12/03 18:09:03 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void recursive(char **tetri, char **map, int maxtetri, int n_tetri)
+static void recursive(t_list *list, char *map, int maxtetri, int mlen)
 {
-	int x_map;
-	int y_map;
+	int x;
 
-	y_map = -1;
-	while (++y_map < SIZE)
+	x = -1;
+	while (++x < SIZE)
 	{
-		x_map = -1;
-		while (++x_map < SIZE)
+		if (x % mlen == 0)
+			++x;
+		if (ft_fillmap(t_list *list, char *map, int mlen))
 		{
-			if (add_tetri(map, y_map, x_map, tetri[n_tetri]))
-			{
-				if ((n_tetri + 1) != maxtetri)
-					recursive(tetri, map, maxtetri, (n_tetri + 1));
-				else
-					ft_print_map(map, SIZE);
-				delete_tetri(map, what_is_tetri(tetri[n_tetri]), SIZE);
-			}
+			if ((n_tetri + 1) != count_list(list))
+				recursive(list, map, maxtetri, mlen);
+			else
+				ft_print_map(map, SIZE);
+			delete_tetri(map, what_is_tetri(tetri[n_tetri]), SIZE);
 		}
 	}
 }

@@ -9,6 +9,8 @@
  * Ajout d une fonction pour compter le nombre de tetriminos "count_tetri"
  * Ajout de n_tetri pour identifier a quel tetriminos nous sommes
  * Debut de la resolution de la problematique du solver
+ * Ajout d un define SIZE et de "count_tetri" dans le .h
+ * Quelque test effectué sur "fillmap", pas d erreur a report (bien ouje !)
 
 ###double_tab
  * Lose myself

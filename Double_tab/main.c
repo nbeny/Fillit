@@ -6,7 +6,7 @@
 /*   By: kbagot <kbagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 18:41:14 by kbagot            #+#    #+#             */
-/*   Updated: 2016/12/01 18:13:06 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/12/05 18:43:33 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int ac, char **av)
 	map = ft_makemap(tminos);
 	while (list)
 	{
-		map = ft_lookmap(map);
+		ft_printtetri(pos, map, list);
 		while (map[i])
 		{
 			printf("%s\n", map[i]);

@@ -6,96 +6,79 @@
 /*   By: nbeny <nbeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 23:25:00 by nbeny             #+#    #+#             */
-/*   Updated: 2016/12/02 01:01:02 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/12/05 18:55:24 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_var	*ft_looktetri(t_list *list, t_var *var, t_pos *pos)
+t_pos	*ft_looktetri(t_list *list, t_var *var, t_pos *pos)
 {
 	int i;
 	int j;
+	int a;
+	int b;
 
 	i = 0;
 	j = 0;
-	while (list->tab[var->j])
+	a = 0;
+	b = 0;
+	while (list->tab[a])
 	{
-		var->i = 0;
-		while (list->tab[var->j][var->i])
+		b = 0;
+		while (list->tab[a][b])
 		{
-			if (list->tab[var->j][var->i] >= 'A' && list->tab[var->j][var->i] <= 'Z')
+			if (list->tab[a][b] == '#')
 			{
-				pos->pos[j][i] = var->j;
+				list->pos[j][i] = a;
 				i++;
-				pos->pos[j][i] = var->i;
+				list->pos[j][i] = b;
 				j++;
 				i = 0;
 			}
-			var->i++;
+			a++;
 		}
-		var->j++;
+		b++;
 	}
-	return (var);
+	return (list);
 }
 
 int		ft_tchecinser(t_pos *pos, char **map)
 {
-	if (map[pos->y + (pos->pos[1][0] - pos->pos[0][0])]\
-		[pos->x + (pos->pos[1][1] - pos->pos[0][1])] != '.')
+	if (map[pos->y + (list->pos[1][0] - list->pos[0][0])]\
+		[pos->x + (list->pos[1][1] - list->pos[0][1])] != '.')
 		return (0);
-	if (map[pos->y + (pos->pos[2][0] - pos->pos[0][0])]\
-		[pos->x + (pos->pos[2][1] - pos->pos[0][1])] != '.')
+	if (map[pos->y + (list->pos[2][0] - list->pos[0][0])]\
+		[pos->x + (list->pos[2][1] - list->pos[0][1])] != '.')
 		return (0);
-	if (map[pos->y + (pos->pos[3][0] - pos->pos[0][0])]\
-		[pos->x + (pos->pos[3][1] - pos->pos[0][1])] != '.')
+	if (map[pos->y + (list->pos[3][0] - list->pos[0][0])]\
+		[pos->x + (list->pos[3][1] - list->pos[0][1])] != '.')
 		return (0);
-	if (map[pos->y + (pos->pos[4][0] - pos->pos[0][0])]\
-		[pos->x + (pos->pos[4][1] - pos->pos[0][1])] != '.')
+	if (map[pos->y + (list->pos[4][0] - list->pos[0][0])]\
+		[pos->x + (list->pos[4][1] - list->pos[0][1])] != '.')
 		return (0);
 	return (1);
 }
 
-char	**ft_printtetri(t_pos *pos, char **map, t_var *var)
+char	**ft_printtetri(char **map, t_list *list, t_pos *pos)
 {
-	var->l = 65;
-	map[pos->y + (pos->pos[1][0] - pos->pos[0][0])]					\
-		[pos->x + (pos->pos[1][1] - pos->pos[0][1])] = (char)(var->l);
-	map[pos->y + (pos->pos[2][0] - pos->pos[0][0])] \
-		[pos->x + (pos->pos[2][1] - pos->pos[0][1])] = (char)(var->l);
-	map[pos->y + (pos->pos[3][0] - pos->pos[0][0])] \
-		[pos->x + (pos->pos[3][1] - pos->pos[0][1])] = (char)(var->l);
-	map[pos->y + (pos->pos[4][0] - pos->pos[0][0])] \
-		[pos->x + (pos->pos[4][1] - pos->pos[0][1])] = (char)(var->l);
-	var->l++;
+	if (ft_tchecinser(pos, map) == 1)
+	{
+		map[pos->y + (list->pos[1][0] - list->pos[0][0])]	\
+			[pos->x + (list->pos[1][1] - list->pos[0][1])] = 'A' + list->n_tetri;
+		map[pos->y + (list->pos[2][0] - list->pos[0][0])] \
+			[pos->x + (list->pos[2][1] - list->pos[0][1])] = 'A' + list->n_tetri;
+		map[pos->y + (list->pos[3][0] - list->pos[0][0])] \
+			[pos->x + (list->pos[3][1] - list->pos[0][1])] = 'A' + list->n_tetri;
+		map[pos->y + (list->pos[4][0] - list->pos[0][0])] \
+			[pos->x + (list->pos[4][1] - list->pos[0][1])] = 'A' + list->n_tetri;
+	}
 	return (map);
 }
 
-char	**ft_lookmap(char **map)
+t_pos	*init_tpos(t_pos *pos)
 {
-	t_pos *pos;
-	t_var *var;
-
-	var = (t_var *)malloc(sizeof(t_pos));
-	var = init_tvar(var);
-	pos = (t_pos *)malloc(sizeof(t_pos));
+	pos->x = 0;
 	pos->y = 0;
-	while (map[pos->y])
-	{
-		pos->x = 0;
-		while (map[pos->y][pos->x])
-		{
-			if (map[pos->y][pos->x] == '.')
-			{
-				if (ft_tchecinser(pos, map) == 1)
-				{
-					map = ft_printtetri(pos, map, var);
-					return (map);
-				}
-			}
-			pos->x++;
-		}
-		pos->y++;
-	}
-	return (map);
+	return (pos);
 }

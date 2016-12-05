@@ -30,7 +30,7 @@ t_list		*init_tab(t_list *list, t_var *var, t_buff *buff)
 		}
 		if (buff->buff[var->b] == '#')
 		{
-			list->tab[var->j][var->i] = 'A';
+			list->tab[var->j][var->i] = '#';
 			var->i++;
 		}
 		if (buff->buff[var->b] == '\n')
@@ -41,6 +41,7 @@ t_list		*init_tab(t_list *list, t_var *var, t_buff *buff)
 		}
 		var->b++;
 	}
+	list->n_tetri = var->l++;
 	return (list);
 }
 

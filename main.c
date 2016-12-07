@@ -6,7 +6,7 @@
 /*   By: kbagot <kbagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 18:41:14 by kbagot            #+#    #+#             */
-/*   Updated: 2016/12/07 05:36:36 by nbeny            ###   ########.fr       */
+/*   Updated: 2016/12/07 05:42:40 by nbeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int			main(int argc, char **argv)
 	}
 	end->result = ft_tabt(listt);
 	ft_resolv(listt, end);
-	ft_free_end(end);
+	ft_free_tend(end);
 	return (0);
 }

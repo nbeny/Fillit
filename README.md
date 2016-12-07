@@ -9,6 +9,33 @@
  
 cas difficile essaye de te faire aider...
 
+valid test 11 : fail :confused:
+WHAT IS EXPECTED:
+
+ACC..
+
+AACCB
+
+ADBBB
+
+.DD.E
+
+.DEEE
+
+YOUR OUTPUT:
+
+A...B.
+
+AABBB.
+
+ACC.D.
+
+..CCDD
+
+..E.D.
+
+EEE...
+
 ##### test avec 42_FileChecker:
 https://github.com/jgigault/42FileChecker
 

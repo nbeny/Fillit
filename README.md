@@ -1,11 +1,11 @@
 # Projet Fillit
 
->>>> #####exploration project.
+>>>> ##### exploration project.
 
-#####Grade ``(100/100)``
+##### Grade ``(100/100)``
 --------  -----------------------
 
-######Etape du projet :
+###### Etape du projet :
 - [X] parcing
 - [X] stockage
 - [X] resolver
